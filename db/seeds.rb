@@ -4,7 +4,8 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.first
+require 'securerandom'
 
 shop_data = {
   name: "Temple Tattoo",
@@ -38,7 +39,7 @@ artists.each do |artist|
 end
 
 3.times do
-  user = User.new(email: "#{(0..100).to_a.sample}@email.com", password: "12345678")
+  user = User.new(email: "#{(0..100).to_a.sample}@email.com", password: "12345678", auth_key: SecureRandom.hex(16))
   shop = Shop.new(shop_data)
   shop.user = user
   shop.save
