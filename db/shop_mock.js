@@ -13,6 +13,7 @@ module.exports({
     qr_url: "https://upload.wikimedia.org/wikipedia/commons/0/0b/QR_code_Wikimedia_Commons_%28URL%29.png",
     artists: [{
       name: "Tianyang",
+      id: 1,
       avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6oUP6AlEYMAG0marnLLRVZ21mZ1Ol_xlKbxXc2SCnpuCbDxzO",
       shop_id: 1,
       years_of_experience: 6,
@@ -20,6 +21,7 @@ module.exports({
     },
       {
         name: "Mutou",
+        id: 2,
         avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3SSTAuIsVDpTmBNUJp_xqz7-b3c3Z_AQG4BX3qCmTKxOyFoe7tw",
         shop_id: 1,
         years_of_experience: 4,
@@ -39,6 +41,7 @@ module.exports({
         qr_url: "https://upload.wikimedia.org/wikipedia/commons/0/0b/QR_code_Wikimedia_Commons_%28URL%29.png",
         artists: [{
           name: "Tianyang",
+          id: 3,
           avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6oUP6AlEYMAG0marnLLRVZ21mZ1Ol_xlKbxXc2SCnpuCbDxzO",
           shop_id: 1,
           years_of_experience: 6,
@@ -46,6 +49,7 @@ module.exports({
         },
         {
           name: "Mutou",
+          id: 4,
           avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3SSTAuIsVDpTmBNUJp_xqz7-b3c3Z_AQG4BX3qCmTKxOyFoe7tw",
           shop_id: 1,
           years_of_experience: 4,
@@ -65,6 +69,7 @@ module.exports({
         qr_url: "https://upload.wikimedia.org/wikipedia/commons/0/0b/QR_code_Wikimedia_Commons_%28URL%29.png",
         artists: [{
           name: "Tianyang",
+          id: 4,
           avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6oUP6AlEYMAG0marnLLRVZ21mZ1Ol_xlKbxXc2SCnpuCbDxzO",
           shop_id: 1,
           years_of_experience: 6,
@@ -72,6 +77,7 @@ module.exports({
         },
         {
           name: "Mutou",
+          id: 5,
           avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3SSTAuIsVDpTmBNUJp_xqz7-b3c3Z_AQG4BX3qCmTKxOyFoe7tw",
           shop_id: 1,
           years_of_experience: 4,
