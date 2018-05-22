@@ -1,6 +1,6 @@
 // Path: /api/v1/shops
 
-module.exports({
+module.exports ={
   "shops": [
     {
       "id": 1,
@@ -258,4 +258,4 @@ module.exports({
       ]
     }
   ]
-})
+}
