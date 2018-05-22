@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     end
   end
   post '/login', to: "login#login"
+  put '/login', to: 'login#update'
 end
