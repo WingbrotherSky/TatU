@@ -19,6 +19,7 @@ json.shops do
         json.art do
           art = Art.where(artist_id: artist.id).limit(9)
           json.array! art do |a|
+            json.id a.id
             json.url a.url
           end
         end
