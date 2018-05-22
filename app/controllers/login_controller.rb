@@ -1,12 +1,15 @@
-class Api::V1::LoginController < Api::V1::BaseController
+class LoginController < Api::V1::BaseController
    URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
 
   def login
     @user = User.where(openid: wechat_user.fetch('openid')).first_or_initialize
-
-    render json: {
-        userId: @user.id
-      }
+    if @user.save
+      render json: {
+          userId: @user.id
+        }
+    else
+      error_message(@user)
+    end
   end
 
   private
@@ -24,5 +27,4 @@ class Api::V1::LoginController < Api::V1::BaseController
     @wechat_response ||= RestClient.post(URL, wechat_params)
     @wechat_user ||= JSON.parse(@wechat_response.body)
   end
-
 end
