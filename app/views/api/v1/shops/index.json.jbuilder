@@ -8,7 +8,7 @@ json.shops do
     json.banner_url shop.banner_url
     json.logo_url shop.logo_url
     json.user_id shop.user_id
-    json.qr_url  shop.qr_Url
+    json.qr_url  shop.qr_url
     json.artists do
       json.array! shop.artists do |artist|
         json.name artist.name
@@ -18,4 +18,5 @@ json.shops do
         json.weibo_url artist.weibo_url
       end
     end
+  end
 end
