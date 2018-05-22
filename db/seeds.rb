@@ -47,6 +47,10 @@ end
    a = Artist.new(artist)
    a.shop = shop
    a.save
+   9.times do
+    art = Art.new(artist_id: a.id, url:"https://s-media-cache-ak0.pinimg.com/originals/47/11/3b/47113b28d99dd034bd2fbd379caa5e63.jpg", primary:false)
+    art.save
+   end
   end
 end
 
