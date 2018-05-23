@@ -11,13 +11,14 @@ json.shops do
     json.qr_url  shop.qr_url
     json.artists do
       json.array! shop.artists do |artist|
+        json.id artist.id
         json.name artist.name
         json.avatar_url artist.avatar_url
         json.shop_id artist.shop_id
         json.years_of_experience artist.years_of_experience
         json.weibo_url artist.weibo_url
         json.art do
-          art = Art.where(artist_id: artist.id).limit(9)
+          art = Art.where(artist_id: artist.id).limit(4)
           json.array! art do |a|
             json.id a.id
             json.url a.url
