@@ -12,7 +12,7 @@ json.artist do
     shop = artist.shop
     json.id shop.id
     json.name shop.name
-    json.log_url shop.logo_url
+    json.logo_url shop.logo_url
     json.location shop.location
     json.phone_number shop.phone_number
   end
