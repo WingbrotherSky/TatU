@@ -13,7 +13,6 @@ class LoginController < Api::V1::BaseController
     auth = params[:auth_key]
     wechat_data = params[:userInfo]
     @user = User.find_by(auth_key: auth)
-    p "-----------------------------------------------------#{@user}"
     if @user.update(user_profile_params)
       success_message
     else
