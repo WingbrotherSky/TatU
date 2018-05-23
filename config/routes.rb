@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :artists, only: [:show]
       resources :shops, only: [:index]
+      resources :arts,  only: [:show]
     end
   end
   post '/login', to: "login#login"
