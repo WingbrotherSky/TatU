@@ -13,7 +13,8 @@ class LoginController < Api::V1::BaseController
     auth = params[:auth_key]
     wechat_data = params[:userInfo]
     @user = User.find_by(auth_key: auth)
-    if @user.update(wechat_data)
+    p "-----------------------------------------------------#{@user}"
+    if @user.update(user_profile_params)
       success_message
     else
       error_message(@user)
@@ -24,52 +25,66 @@ class LoginController < Api::V1::BaseController
 
   private
 
-   def login_without_auth
-      @user = User.where(openid: wechat_user.fetch('openid')).first_or_initialize
-      unless @user.auth_key
-        @user.auth_key = SecureRandom.hex(16)
-      end
-      if @user.save
-        render json: {
-            auth_key: @user.auth_key
-          }
-      else
-        error_message(@user)
-      end
+  def user_profile_params
+    params.require(:userInfo).permit(
+        :auth_key,
+        :avatarUrl,
+        :city,
+        :country,
+        :gender,
+        :language,
+        :nickName,
+        :province)
+  end
+
+
+  def login_without_auth
+    @user = User.where(openid: wechat_user.fetch('openid')).first_or_initialize
+    unless @user.auth_key
+      @user.auth_key = SecureRandom.hex(16)
     end
+    if @user.save
+      render json: {
+          auth_key: @user.auth_key
+        }
+    else
+      error_message(@user.errors.messages)
+    end
+  end
 
   def login_with_auth
-    auth = params[:auth_key]
-    if User.find_by(auth_key: auth)
-      render json: {
-        userInfo: {
-          avatarUrl:"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIJW2zkn2aIStOgTZfLcbIlLuFOWk5mic6icpTLvTvtIkvpRq5ou4Xcm4wPxiaPibAtND5Oh4QSaTS65Q/132",
-          city: "Chengdu",
-          country: "China",
-          gender: 1,
-          language: "en",
-          nickName: "Jake",
-          province: "Sichuan"
-        }
+  auth = params[:auth_key]
+  @user = User.find_by(auth_key: auth)
+  if @user
+    render json: {
+      userInfo: {
+        avatarUrl:@user.avatarUrl,
+        city: @user.city,
+        country: @user.country,
+        gender: @user.gender,
+        language: @user.language,
+        nickName: @user.nickName,
+        province: @user.province
       }
-    else
-      render json: {
-        errors: "Invalid auth_key"
-      }
-    end
+    }
+  else
+    render json: {
+      errors: "Invalid auth_key"
+    }
+  end
   end
 
   def wechat_params
-    {
-      appid: ENV['appId'],
-      secret: ENV['appSecret'],
-      js_code: params[:code],
-      grant_type: 'authorization_code'
-    }
+  {
+    appid: ENV['appId'],
+    secret: ENV['appSecret'],
+    js_code: params[:code],
+    grant_type: 'authorization_code'
+  }
   end
 
   def wechat_user
-    @wechat_response ||= RestClient.post(URL, wechat_params)
-    @wechat_user ||= JSON.parse(@wechat_response.body)
+  @wechat_response ||= RestClient.post(URL, wechat_params)
+  @wechat_user ||= JSON.parse(@wechat_response.body)
   end
-end
+  end
