@@ -1,4 +1,4 @@
-class LoginController
+class LoginController < Api::V1::BaseController
    URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
 
   def login
