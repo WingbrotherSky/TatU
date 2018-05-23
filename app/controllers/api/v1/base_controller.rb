@@ -3,7 +3,16 @@ class Api::V1::BaseController < ActionController::Base
   rescue_from StandardError,                with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
+  before_action :authenticate_with_token
+
   private
+
+  def authenticate_with_token
+    token = params[:auth_key]
+
+    @current_user = User.find_by(auth_key: token)
+  end
+
 
   def not_found(exception)
     render json: { error: exception.message }, status: :not_found
