@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :shops, only: [:index, :show]
       get '/shops/:query', to: 'shops#search'
       resources :arts,  only: [:show]
+      resources :favorites, only: [:index, :create]
     end
   end
   post '/login', to: "login#login"
