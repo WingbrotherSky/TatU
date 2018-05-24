@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :artists, only: [:show]
-      resources :shops, only: [:index]
+      resources :shops, only: [:index, :show]
       get '/shops/:query', to: 'shops#search'
       resources :arts,  only: [:show]
     end
