@@ -17,7 +17,7 @@ json.favorites do
         json.weibo_url aftist.weibo_url
         json.styles do
           json.array! artist.style_list do |style|
-            json.style style
+            json.name style
           end
         end
       end
