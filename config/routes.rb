@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :artists, only: [:show]
       resources :shops, only: [:index]
       resources :arts,  only: [:show]
+      resources :favorites, only: [:index, :create]
     end
   end
   post '/login', to: "login#login"
