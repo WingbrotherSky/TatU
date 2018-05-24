@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524032019) do
-
+ActiveRecord::Schema.define(version: 20180524062947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +42,23 @@ ActiveRecord::Schema.define(version: 20180524032019) do
     t.datetime "updated_at", null: false
     t.index ["art_id"], name: "index_favorites_on_art_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "inboxes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_inboxes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "content"
+    t.bigint "inbox_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inbox_id"], name: "index_messages_on_inbox_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -112,5 +128,8 @@ ActiveRecord::Schema.define(version: 20180524032019) do
 
   add_foreign_key "artists", "shops"
   add_foreign_key "arts", "artists"
+  add_foreign_key "inboxes", "users"
+  add_foreign_key "messages", "inboxes"
+  add_foreign_key "messages", "users"
   add_foreign_key "shops", "users"
 end
