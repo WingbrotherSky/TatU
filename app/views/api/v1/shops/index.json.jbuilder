@@ -18,7 +18,7 @@ json.shops do
         json.years_of_experience artist.years_of_experience
         json.weibo_url artist.weibo_url
         json.art do
-          art = Art.where(artist_id: artist.id).limit(4)
+          art = Art.where(artist_id: artist.id).limit(6)
           json.array! art do |a|
             json.id a.id
             json.url a.url
