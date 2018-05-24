@@ -43,6 +43,9 @@ class LoginController < Api::V1::BaseController
       @user.auth_key = SecureRandom.hex(16)
     end
     if @user.save
+      @inbox = Inbox.new()
+      @inbox.user = @user
+      @inbox.save
       render json: {
           auth_key: @user.auth_key
         }
@@ -83,7 +86,7 @@ class LoginController < Api::V1::BaseController
   end
 
   def wechat_user
-  @wechat_response ||= RestClient.post(URL, wechat_params)
-  @wechat_user ||= JSON.parse(@wechat_response.body)
+    @wechat_response ||= RestClient.post(URL, wechat_params)
+    @wechat_user ||= JSON.parse(@wechat_response.body)
   end
-  end
+end
