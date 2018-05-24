@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first
 require 'securerandom'
 
+
 shop_data = {
   name: "Temple Tattoo",
   description: "The coolest, safest tattoo studio in Chengdu. We do a lot of cool stuff I'm not going to go through in mock",
@@ -22,14 +23,16 @@ artist1 = {
   name: "Tianyang",
   avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6oUP6AlEYMAG0marnLLRVZ21mZ1Ol_xlKbxXc2SCnpuCbDxzO",
   years_of_experience: 6,
-  weibo_url: "https://weibo.com/u/2511311662?refer_flag=1001030103_&is_hot=1#_loginLayer_1526959157437"
+  weibo_url: "https://weibo.com/u/2511311662?refer_flag=1001030103_&is_hot=1#_loginLayer_1526959157437",
+  style_list: ["New School"]
 }
 
 artist2 = {
   name: "Mutou",
   avatar_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3SSTAuIsVDpTmBNUJp_xqz7-b3c3Z_AQG4BX3qCmTKxOyFoe7tw",
   years_of_experience: 4,
-  weibo_url: "https://weibo.com/u/2511311662?refer_flag=1001030103_&is_hot=1#_loginLayer_1526959157437"
+  weibo_url: "https://weibo.com/u/2511311662?refer_flag=1001030103_&is_hot=1#_loginLayer_1526959157437",
+  style_list: ["Traditional"]
 }
 
 artists = [artist1, artist2]
