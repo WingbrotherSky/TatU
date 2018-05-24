@@ -10,4 +10,10 @@ class Api::V1::MessagesController < Api::V1::BaseController
       error_message(@message)
     end
   end
+
+  private
+
+  def message_params
+    params.require(:message).permit(:content, :user_id)
+  end
 end
