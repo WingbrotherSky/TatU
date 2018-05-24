@@ -20,6 +20,7 @@ gem 'uglifier'
 gem 'webpacker'
 
 gem 'rest-client'
+gem 'acts-as-taggable-on', '~> 5.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
