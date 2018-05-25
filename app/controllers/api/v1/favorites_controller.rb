@@ -13,4 +13,11 @@ class Api::V1::FavoritesController < Api::V1::BaseController
       error_message(@favorite)
     end
   end
+
+  private
+
+  def favorite_params
+    params.require(:favorite).permit(:art_id)
+  end
+  
 end

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get '/shops/:query', to: 'shops#search'
       resources :arts,  only: [:show]
       resources :favorites, only: [:index, :create]
+      resources :messages, only: [:create]
+      get '/conversation/:id', to: 'messages#conversation'
     end
   end
   post '/login', to: "login#login"
