@@ -42,6 +42,9 @@ class LoginController < Api::V1::BaseController
     unless @user.auth_key
       @user.auth_key = SecureRandom.hex(16)
     end
+    unless @user.email
+      @user.email = "#{@user.auth_key}@email.com"
+    end
     if @user.save
       @inbox = Inbox.new()
       @inbox.user = @user
