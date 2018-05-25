@@ -1,4 +1,4 @@
-favs = @favorite
+favs = @favorites
 json.favorites do
   json.array! favs do |f|
     json.id f.id
