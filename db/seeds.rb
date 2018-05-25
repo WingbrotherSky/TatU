@@ -45,6 +45,10 @@ end
 zen_art_urls = %w[https://res.cloudinary.com/dwtivbec9/image/upload/v1527180823/WechatIMG831527172503_.pic_hd.jpg https://res.cloudinary.com/dwtivbec9/image/upload/v1527180822/WechatIMG791527172501_.pic_hd.jpg https://res.cloudinary.com/dwtivbec9/image/upload/v1527180822/WechatIMG821527172502_.pic_hd.jpg https://res.cloudinary.com/dwtivbec9/image/upload/v1527180821/WechatIMG801527172502_.pic_hd.jpg https://res.cloudinary.com/dwtivbec9/image/upload/v1527180816/WechatIMG711527172437_.pic_hd.jpg https://res.cloudinary.com/dwtivbec9/image/upload/v1527180815/WechatIMG691527172434_.pic_hd.jpg]
 3.times do
   user = User.new(email: "#{(0..100).to_a.sample}@email.com", password: "12345678", auth_key: SecureRandom.hex(16))
+  user.save
+  inbox = Inbox.new
+  inbox.user = user
+  inbox.save
   shop = Shop.new(shop_data)
   shop.user = user
   shop.save
