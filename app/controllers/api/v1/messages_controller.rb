@@ -3,7 +3,10 @@ class Api::V1::MessagesController < Api::V1::BaseController
     @message = Message.new()
     @message.user = @current_user
     @message.content = params[:content]
-    @message.inbox = Inbox.find_by(user_id: params[:user_id])
+    artist = Artist.find(params[:user_id])
+    shop = artist.shop
+    shop_owner = shop.user
+    @message.inbox = Inbox.find_by(user_id: shop_owner.id)
     if @message.save
       success_message
     else
@@ -11,10 +14,24 @@ class Api::V1::MessagesController < Api::V1::BaseController
     end
   end
 
+  def conversations
+    all_messages = Message.where(user_id: @current_user.id).or( Message.where(inbox_id: @current_user.inbox.id))
+    conversers =[]
+    all_messages.each do |message|
+      if message.user == @current_user
+        conversers << message.inbox.user
+      else
+        conversers << message.user
+      end
+    end
+    @conversers = conversers.uniq!
+  end
+  
+
   def conversation
-    @target = params[:user_id]
-    @my_messages = Message.where("user_id = ? AND inbox_id = ?", [@current_user.id, @target.inbox.id])
-    @their_messages = Message.where("user_id = ? AND inbox_id = ?", [@target.id, @current_user.inbox.id])
+    @target = User.find(params[:user_id])
+    @my_messages = Message.where(user_id: @current_user.id, inbox_id: @target.inbox.id)
+    @their_messages = Message.where(user_id: @target.id, inbox_id: @current_user.inbox.id)
     @conversation = (@my_messages + @their_messages).sort_by { |message| message.created_at }
   end
   
