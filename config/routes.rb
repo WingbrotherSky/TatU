@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       resources :arts,  only: [:show]
       resources :favorites, only: [:index, :create]
       resources :messages, only: [:create]
-      get '/conversation/:id', to: 'messages#conversation'
+      get '/conversation/:user_id', to: 'messages#conversation'
+      get '/conversations', to: 'messages#conversations'
     end
   end
   post '/login', to: "login#login"
