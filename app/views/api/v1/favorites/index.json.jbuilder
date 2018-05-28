@@ -25,6 +25,7 @@ json.favorites do
           json.id shop.id
           json.name shop.name
           json.logo_url shop.logo_url
+        end
       end
     end
   end
