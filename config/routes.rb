@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :shops, only: [:index, :show]
       get '/shops/:query', to: 'shops#search'
       resources :arts,  only: [:show]
-      resources :favorites, only: [:index, :create]
+      resources :favorites, only: [:index, :create, :destroy]
       resources :messages, only: [:create]
       get '/conversation/:user_id', to: 'messages#conversation'
       get '/conversations', to: 'messages#conversations'
