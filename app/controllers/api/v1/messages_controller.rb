@@ -3,8 +3,7 @@ class Api::V1::MessagesController < Api::V1::BaseController
     @message = Message.new()
     @message.user = @current_user
     @message.content = params[:content]
-    artist = Artist.find(params[:user_id])
-    shop = artist.shop
+    shop = Shop.find(params[:user_id])
     shop_owner = shop.user
     @message.inbox = Inbox.find_by(user_id: shop_owner.id)
     if @message.save
