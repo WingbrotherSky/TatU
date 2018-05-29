@@ -27,10 +27,11 @@ json.id shop.id
         end
       end
       json.art do
-        art = Art.where(artist_id: artist.id).limit(4)
+        art = Art.where(artist_id: artist.id)
         json.array! art do |a|
           json.id a.id
           json.url a.url
+          json.favorited Favorite.where(user_id: @current_user.id, art_id: art.id).present?
         end
       end
     end

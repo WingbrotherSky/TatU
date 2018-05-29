@@ -3,6 +3,7 @@ art = @art
 json.id art.id
 json.url art.url
 json.primary art.primary
+json.favorited Favorite.where(user_id: @current_user.id, art_id: art.id).present?
 json.artist do
   artist = art.artist
   json.id artist.id
