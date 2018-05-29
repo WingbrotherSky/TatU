@@ -53,6 +53,7 @@ class LoginController < Api::V1::BaseController
           auth_key: @user.auth_key
         }
     else
+      p "USER SAVE ERROR---------------------------------------------------- #{@user.errors.messages}"
       error_message(@user.errors.messages)
     end
   end
@@ -91,5 +92,6 @@ class LoginController < Api::V1::BaseController
   def wechat_user
     @wechat_response ||= RestClient.post(URL, wechat_params)
     @wechat_user ||= JSON.parse(@wechat_response.body)
+    p "WECHAT USER-------------------------------------------------------------------- #{@wechat_user}"
   end
 end
