@@ -24,7 +24,7 @@ class Api::V1::MessagesController < Api::V1::BaseController
         conversers << message.user
       end
     end
-    @conversers = conversers.uniq!
+    @conversers = conversers.uniq
   end
   
 

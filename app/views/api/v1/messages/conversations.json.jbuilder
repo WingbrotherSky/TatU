@@ -1,4 +1,5 @@
 json.users do
+    p @conversers
     json.array! @conversers do |user|
         json.user_id user.id
         if user.shop
