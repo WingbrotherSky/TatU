@@ -46,6 +46,7 @@ class LoginController < Api::V1::BaseController
       @user.email = "#{@user.auth_key}@email.com"
     end
     if @user.save
+      p "USER----------------------------------------------------------------- #{@user}"
       @inbox = Inbox.new()
       @inbox.user = @user
       @inbox.save
