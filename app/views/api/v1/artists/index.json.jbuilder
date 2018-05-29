@@ -9,7 +9,7 @@ json.artists do
             json.array! artist.style_list do |style|
               json.style style
             end
-          end
+        end
         json.shop do
             shop = artist.shop
             json.id shop.id
