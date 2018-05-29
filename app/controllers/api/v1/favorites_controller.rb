@@ -12,6 +12,18 @@ class Api::V1::FavoritesController < Api::V1::BaseController
     else
       error_message(@favorite)
     end
+
+    def destroy
+      @favorite = Favorite.find(params[:id])
+      if @favorite.user == @current_user
+        if @favorite.destroy
+          success_message
+        else
+          error_message(@favorite)
+        end
+      end
+    end
+    
   end
 
   private
