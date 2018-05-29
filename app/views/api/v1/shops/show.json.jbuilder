@@ -31,7 +31,7 @@ json.id shop.id
         json.array! art do |a|
           json.id a.id
           json.url a.url
-          json.favorited Favorite.where(user_id: @current_user.id, art_id: art.id).present?
+          json.favorited Favorite.where(user_id: @current_user.id, art_id: a.id).present?
         end
       end
     end
