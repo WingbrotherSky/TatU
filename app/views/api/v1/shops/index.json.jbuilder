@@ -17,6 +17,11 @@ json.shops do
         json.shop_id artist.shop_id
         json.years_of_experience artist.years_of_experience
         json.weibo_url artist.weibo_url
+        json.tags do
+          json.array! artist.style_list do |style|
+            json.style style
+          end
+        end
         json.art do
           art = Art.where(artist_id: artist.id).limit(6)
           json.array! art do |a|
