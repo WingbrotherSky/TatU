@@ -1,3 +1,9 @@
+json.tags do
+    json.array! (["All"] + Artist.all.map{ |artist| artist.style_list }.flatten.sort) do |tag|
+      json.style tag
+    end
+  end
+
 json.artists do
     json.array! @artists do |artist|
         json.id artist.id
