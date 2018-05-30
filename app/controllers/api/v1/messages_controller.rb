@@ -28,9 +28,10 @@ class Api::V1::MessagesController < Api::V1::BaseController
   
 
   def conversation
-    @target = User.find(params[:user_id])
-    @my_messages = Message.where(user_id: @current_user.id, inbox_id: @target.inbox.id)
-    @their_messages = Message.where(user_id: @target.id, inbox_id: @current_user.inbox.id)
+    @shop = Shop.find(params[:shop_id])
+    @user = @shop.user
+    @my_messages = Message.where(user_id: @current_user.id, inbox_id: @user.inbox.id)
+    @their_messages = Message.where(user_id: @user.id, inbox_id: @current_user.inbox.id)
     @conversation = (@my_messages + @their_messages).sort_by { |message| message.created_at }
   end
   
