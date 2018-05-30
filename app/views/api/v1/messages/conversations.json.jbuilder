@@ -5,7 +5,7 @@ json.users do
         if user.shop
             json.shop do
                 json.shop true
-                json.id shop.id
+                json.id user.shop.id
                 json.name user.shop.name
                 json.logo_url user.shop.logo_url
             end
