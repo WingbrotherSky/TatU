@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   namespace :api , defaults: { format: 'json'} do
     namespace :v1 do
       resources :artists, only: [:index, :show]
+      get '/artists/search/:query', to: 'artists#search'
       resources :shops, only: [:index, :show]
-      get '/shops/:query', to: 'shops#search'
       resources :arts,  only: [:show]
       resources :favorites, only: [:index, :create, :destroy]
       resources :messages, only: [:create]
