@@ -42,7 +42,7 @@ class LoginController < Api::V1::BaseController
     unless @user.auth_key
       @user.auth_key = SecureRandom.hex(16)
     end
-    unless @user.email
+    unless @user.email.present?
       @user.email = "#{@user.auth_key}@email.com"
     end
     if @user.save
@@ -82,6 +82,8 @@ class LoginController < Api::V1::BaseController
   end
 
   def wechat_params
+  p ENV['appId']
+  p ENV['appSecret']
   {
     appid: ENV['appId'],
     secret: ENV['appSecret'],
