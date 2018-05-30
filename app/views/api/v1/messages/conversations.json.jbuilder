@@ -3,9 +3,12 @@ json.users do
     json.array! @conversers do |user|
         json.user_id user.id
         if user.shop
-            json.shop true
-            json.name user.shop.name
-            json.logo_url user.shop.logo_url
+            json.shop do
+                json.shop true
+                json.id user.shop.id
+                json.name user.shop.name
+                json.logo_url user.shop.logo_url
+            end
         else
             json.shop false
             json.name user.username
